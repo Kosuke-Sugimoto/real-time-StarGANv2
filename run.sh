@@ -8,10 +8,10 @@ then
     docker build -t $DOCKER_IMAGE_NAME .
 fi
 
+# --device /dev/snd は wsl2 を使っているとエラーが発生
 docker run -it \
            --name $DOCKER_CONTAINER_NAME \
            --ipc=host \
-           --device /dev/snd \
            --ulimit memlock=-1 \
            --ulimit stack=67108864 \
            --gpus all \
